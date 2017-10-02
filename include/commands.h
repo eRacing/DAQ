@@ -5,7 +5,6 @@
 // Packet format (request) : command id (1 byte) | command payload (0 to COMMAND_BUFFER_SIZE - 1 bytes)
 // Packet format (response) : command id (1 byte) | command payload (response, multiple bytes, depends on the command)
 
-
 #define CMD_PING	0x0A
 // Ping command, used to see if the device is responding
 // Request : CMD_PING (1 byte)

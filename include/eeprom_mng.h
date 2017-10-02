@@ -2,10 +2,8 @@
 //	EEPROM related functions
 //
 
-
 #include "eeprom_lib.h"
 #include "can_lib.h"
-
 
 CAN_Speed_t read_CAN_bitrate_config(void);
 

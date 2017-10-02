@@ -4,7 +4,6 @@
 
 #include "can_mng.h"
 
-
 //! Initialize xbee module
 void xbee_init(void);
 

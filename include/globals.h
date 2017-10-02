@@ -2,7 +2,6 @@
 //	Contains global variables and definitions
 //
 
-
 #ifndef GLOBALS_H
 #define GLOBALS_H
 

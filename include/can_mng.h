@@ -11,10 +11,10 @@
 
 typedef struct
 {
-	CAN_message_t msg; 		// Standard CAN message (id, data, dlc)
-	uint32_t timestamp;		// Timestamp (in tenth of ms)
-	uint32_t number;		// Message number
-	
+    CAN_message_t msg; 		// Standard CAN message (id, data, dlc)
+    uint32_t timestamp;		// Timestamp (in tenth of ms)
+    uint32_t number;		// Message number
+
 } CAN_log_message_t;
 
 #endif
@@ -30,5 +30,4 @@ void set_CAN_bitrate(CAN_Speed_t speed);
 
 // Returns the configured CAN bitrate in kbps
 CAN_Speed_t get_CAN_bitrate(void);
-
 
