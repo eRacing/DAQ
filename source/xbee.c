@@ -1,15 +1,16 @@
 #include "can_mng.h"
 #include "commands.h"
 #include "spi_lib.h"
+#include "timer_lib.h"
 
 // TM4C specific
-#include "inc/hw_gpio.h"
-#include "inc/hw_memmap.h"
-#include "inc/hw_ints.h"
-#include "inc/hw_types.h"
-#include "driverlib/sysctl.h"
-#include "driverlib/rom_map.h"
-#include "driverlib/gpio.h"
+//#include "inc/hw_gpio.h"
+//#include "inc/hw_memmap.h"
+//#include "inc/hw_ints.h"
+//#include "inc/hw_types.h"
+//#include "driverlib/sysctl.h"
+//#include "driverlib/rom_map.h"
+//#include "driverlib/gpio.h"
 
 #define BUFFER_SIZE 22
 #define SPI_CHANNEL 0
@@ -26,54 +27,46 @@ static uint16_t src_port = 0x2616;	// UDP port for packet tansmission
 void SPI_send_buffer(uint8_t channel, uint8_t* buffer, uint8_t buffer_size);
 void xbee_send_UDP_packet(uint8_t *payload, uint8_t size);
 
-void delay(uint32_t milliseconds)
-{
-    MAP_SysCtlDelay((MAP_SysCtlClockGet() / 3) * (milliseconds / 1000.0f));
-}
-
 void xbee_init(void)
 {
     // src_port = get configuration from EEPROM
     // dest_port = get configuration from EEPROM
 
     // Enable ports
-    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-    while (!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOA))
-    {
-    }
-    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
-    while (!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOB))
-    {
-    }
+    //MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+    //while (!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOA))
+    //{
+    //}
+    //MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
+    //while (!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOB))
+    //{
+    //}
 
     //MAP_GPIOPinTypeGPIOInput(GPIO_PORTA_BASE, XBEE_ATTN);
 
-    /*
-     // SPI MODE ENABLE
+    // SPI MODE ENABLE
 
-     MAP_GPIOPinTypeGPIOInput(GPIO_PORTA_BASE, XBEE_RESET);
+    //MAP_GPIOPinTypeGPIOInput(GPIO_PORTA_BASE, XBEE_RESET);
 
-     // Set DOUT low (to start in SPI mode)
-     MAP_GPIOPinTypeGPIOOutput(GPIO_PORTB_BASE, XBEE_DOUT);
-     MAP_GPIOPinWrite(GPIO_PORTB_BASE, XBEE_DOUT, 0x0);
+    // Set DOUT low (to start in SPI mode)
+    //MAP_GPIOPinTypeGPIOOutput(GPIO_PORTB_BASE, XBEE_DOUT);
+    //MAP_GPIOPinWrite(GPIO_PORTB_BASE, XBEE_DOUT, 0x0);
 
-     // Reset xbee
-     MAP_GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE, XBEE_RESET);
-     MAP_GPIOPinWrite(GPIO_PORTA_BASE, XBEE_RESET, 0x0);
+    // Reset xbee
+    //MAP_GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE, XBEE_RESET);
+    //MAP_GPIOPinWrite(GPIO_PORTA_BASE, XBEE_RESET, 0x0);
 
-     // Wait
-     delay(100);
+    // Wait
+    //delay_ms(100);
 
-     // Desactivate reset
-     MAP_GPIOPinTypeGPIOInput(GPIO_PORTA_BASE, XBEE_RESET);
-     MAP_GPIOPinWrite(GPIO_PORTA_BASE, XBEE_RESET, XBEE_RESET);
+    // Desactivate reset
+    //MAP_GPIOPinTypeGPIOInput(GPIO_PORTA_BASE, XBEE_RESET);
+    //MAP_GPIOPinWrite(GPIO_PORTA_BASE, XBEE_RESET, XBEE_RESET);
 
-     MAP_GPIOPinTypeGPIOInput(GPIO_PORTB_BASE, XBEE_DOUT);
+    //MAP_GPIOPinTypeGPIOInput(GPIO_PORTB_BASE, XBEE_DOUT);
 
-     // Wait for ATTN
-     //while (MAP_GPIOPinRead(GPIO_PORTA_BASE, RESET_ATTN) == ){}
-
-     */
+    // Wait for ATTN
+    //while (MAP_GPIOPinRead(GPIO_PORTA_BASE, RESET_ATTN) == ){}
 
     // SPI CONFIGURATION
     SPI_Config_t spi_config;
@@ -95,31 +88,31 @@ void xbee_init(void)
     uint8_t cmd5[8] = { 0x7E, 0x00, 0x04, 0x09, 0x0B, 0x57, 0x52, 0x42 };
     uint8_t cmd6[8] = { 0x7E, 0x00, 0x04, 0x09, 0x0C, 0x41, 0x43, 0x66 };
 
-    delay(2000);
+    delay_ms(2000);
 
     SPI_send_buffer(SPI_CHANNEL, start, 3);
-    delay(1000);
+    delay_ms(1000);
     SPI_send_buffer(SPI_CHANNEL, cmd1, 9);
     SPI_send_buffer(SPI_CHANNEL, end, 1);
-    delay(100);
+    delay_ms(100);
     SPI_send_buffer(SPI_CHANNEL, cmd2, 8);
     SPI_send_buffer(SPI_CHANNEL, end, 1);
-    delay(100);
+    delay_ms(100);
     SPI_send_buffer(SPI_CHANNEL, cmd3, 8);
     SPI_send_buffer(SPI_CHANNEL, end, 1);
-    delay(100);
+    delay_ms(100);
     SPI_send_buffer(SPI_CHANNEL, cmd4, 9);
     SPI_send_buffer(SPI_CHANNEL, end, 1);
-    delay(100);
+    delay_ms(100);
     SPI_send_buffer(SPI_CHANNEL, cmd5, 8);
     SPI_send_buffer(SPI_CHANNEL, end, 1);
-    delay(100);
+    delay_ms(100);
     SPI_send_buffer(SPI_CHANNEL, cmd6, 8);
     SPI_send_buffer(SPI_CHANNEL, end, 1);
 
-    delay(2000);
+    delay_ms(2000);
 
-    delay(1000);
+    delay_ms(1000);
 
 }
 
@@ -234,18 +227,20 @@ void xbee_send_UDP_packet(uint8_t *payload, uint8_t size)
     checksum = 0xFF - c;
     buf[3 + length] = checksum;
 
-    uint8_t message[22] = { 0x7E, 0x00, 0x7D, 0x31, 0x20, 0x23, 0xFF, 0xFF,
-                            0xFF, 0xFF, 0x26, 0x16, 0x26, 0x16, 0x00, 0x00,
-                            0x48, 0x45, 0x4C, 0x4C, 0x4F, 0xD4 };  //HELLO
-    uint8_t message2[24] = { 0x61, 0x62, 0x63, 0x61, 0x62, 0x63, 0x61, 0x62,
-                             0x63, 0x61, 0x62, 0x63, 0x61, 0x62, 0x63, 0x61,
-                             0x62, 0x63, 0x61, 0x62, 0x63, 0x61, 0x62, 0x63 };
-    uint8_t message3[17] = { 0x7E, 0x00, 0x0D, 0x20, 0x01, 0xFF, 0xFF, 0xFF,
-                             0xFF, 0x26, 0x16, 0x26, 0x16, 0x00, 0x00, 0x41,
-                             0x29 };
-    uint8_t message4[21] = { 0x7E, 0x00, 0x11, 0x20, 0x01, 0xFF, 0xFF, 0xFF,
-                             0xFF, 0x26, 0x16, 0x26, 0x16, 0x00, 0x00, 0x48,
-                             0x45, 0x4C, 0x4C, 0x4F, 0xF6 };
+    /*
+     uint8_t message[22] = { 0x7E, 0x00, 0x7D, 0x31, 0x20, 0x23, 0xFF, 0xFF,
+     0xFF, 0xFF, 0x26, 0x16, 0x26, 0x16, 0x00, 0x00,
+     0x48, 0x45, 0x4C, 0x4C, 0x4F, 0xD4 };  //HELLO
+     uint8_t message2[24] = { 0x61, 0x62, 0x63, 0x61, 0x62, 0x63, 0x61, 0x62,
+     0x63, 0x61, 0x62, 0x63, 0x61, 0x62, 0x63, 0x61,
+     0x62, 0x63, 0x61, 0x62, 0x63, 0x61, 0x62, 0x63 };
+     uint8_t message3[17] = { 0x7E, 0x00, 0x0D, 0x20, 0x01, 0xFF, 0xFF, 0xFF,
+     0xFF, 0x26, 0x16, 0x26, 0x16, 0x00, 0x00, 0x41,
+     0x29 };
+     uint8_t message4[21] = { 0x7E, 0x00, 0x11, 0x20, 0x01, 0xFF, 0xFF, 0xFF,
+     0xFF, 0x26, 0x16, 0x26, 0x16, 0x00, 0x00, 0x48,
+     0x45, 0x4C, 0x4C, 0x4F, 0xF6 };
+     */
 
     //TODO: fix size/length
     //TODO spi chip select?

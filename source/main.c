@@ -4,9 +4,6 @@
 #include "timer_lib.h"
 #include "globals.h"
 #include "xbee.h"
-#include "can_mng.h"
-#include "eeprom_mng.h"
-#include "command_mng.h"
 
 #define CAN_BUS 0 
 #define CAN_BITRATE BITRATE_500000
@@ -31,20 +28,20 @@ int main(void)
     // Configure Xbee module
     xbee_init();
 
-    uint32_t msg_number = 0;
-    uint32_t timestamp = 0;
+    //uint32_t msg_number = 0;
+    //uint32_t timestamp = 0;
 
     CAN_message_t rx_msg = { 0, 0x8, 0 };
     CAN_log_message_t logmsg = { rx_msg, 0xFFFFFFFF, 0 };
 
-    uint8_t payload[] = "HELLO WORLD";
+    //uint8_t payload[] = "HELLO WORLD";
 
-    int i;
+    //int i;
     while (1)
     {
 
 //	xbee_send_UDP_packet(payload, 11);
-//	 delay(100);
+//	 delay_ms(100);
 
 //cmd_process_command();
 
@@ -65,7 +62,7 @@ int main(void)
 //        msg_number++;
 //        timestamp = getTime_ms();
 
-        delay(100);
+        delay_ms(100);
 
     }
 
