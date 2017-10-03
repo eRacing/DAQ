@@ -1,5 +1,4 @@
 #include "system_lib.h"
-#include "uart_lib.h"
 #include "can_lib.h"
 #include "timer_lib.h"
 #include "globals.h"
@@ -7,9 +6,6 @@
 
 #define CAN_BUS 0 
 #define CAN_BITRATE BITRATE_500000
-#define SPI_CHANNEL 0
-
-void xbee_send_UDP_packet(uint8_t *payload, uint8_t size);
 
 int main(void)
 {
@@ -24,47 +20,40 @@ int main(void)
     CAN_init(CAN_BUS, can_config);
 
     // Initialize EEPROM
+    // TODO
 
-    // Configure Xbee module
+    // Initialize XBee module
     xbee_init();
 
-    //uint32_t msg_number = 0;
-    //uint32_t timestamp = 0;
 
-    CAN_message_t rx_msg = { 0, 0x8, 0 };
-    CAN_log_message_t logmsg = { rx_msg, 0xFFFFFFFF, 0 };
+    uint32_t msg_number = 0;
+    uint32_t timestamp = getTime_ms();
 
-    //uint8_t payload[] = "HELLO WORLD";
-
-    //int i;
     while (1)
     {
-
-//	xbee_send_UDP_packet(payload, 11);
-//	 delay_ms(100);
-
-//cmd_process_command();
+        //cmd_process_command();
 
         /*
-         CAN_read_message(CAN_BUS, &rx_msg);
+        CAN_read_message(CAN_BUS, &rx_msg);
 
-         logmsg.msg.id = rx_msg.id;
-         logmsg.msg.length = rx_msg.length;
-         for (i=0; i<rx_msg.length; i++) {
-         logmsg.msg.data[i] = rx_msg.data[i];
-         }
-         logmsg.timestamp = timestamp;
-         logmsg.number = msg_number;
-         */
+        logmsg.msg.id = rx_msg.id;
+        logmsg.msg.length = rx_msg.length;
+        for (i=0; i<rx_msg.length; i++) {
+        logmsg.msg.data[i] = rx_msg.data[i];
+        }
+        logmsg.timestamp = timestamp;
+        logmsg.number = msg_number;
+        */
+
+        CAN_message_t rx_msg = { 42, 3, {0x42, 0xAB, 0xCD} };
+        CAN_log_message_t logmsg = { rx_msg, timestamp, msg_number };
 
         xbee_send_CAN_message(logmsg);
 
-//        msg_number++;
-//        timestamp = getTime_ms();
+        msg_number++;
+        timestamp = getTime_ms();
 
-        delay_ms(100);
-
+        delay_ms(1000);
     }
 
 }
-
