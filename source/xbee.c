@@ -32,6 +32,41 @@ void xbee_init(void)
     spi_config.dataWidth_ = 8;
 
     SPI_init(SPI_CHANNEL, spi_config);
+
+    uint8_t start[3] = { '+', '+', '+' };
+    uint8_t end[1] = { 0x0D };
+
+    uint8_t cmd1[9] = { 0x7E, 0x00, 0x05, 0x09, 0x07, 0x49, 0x50, 0x01, 0x55 };
+    uint8_t cmd2[8] = { 0x7E, 0x00, 0x04, 0x09, 0x08, 0x57, 0x52, 0x45 };
+    uint8_t cmd3[8] = { 0x7E, 0x00, 0x04, 0x09, 0x09, 0x41, 0x43, 0x69 };
+    uint8_t cmd4[9] = { 0x7E, 0x00, 0x05, 0x09, 0x0A, 0x49, 0x50, 0x00, 0x53 };
+    uint8_t cmd5[8] = { 0x7E, 0x00, 0x04, 0x09, 0x0B, 0x57, 0x52, 0x42 };
+    uint8_t cmd6[8] = { 0x7E, 0x00, 0x04, 0x09, 0x0C, 0x41, 0x43, 0x66 };
+
+    delay_ms(2000);
+
+    SPI_send_buffer(SPI_CHANNEL, start, 3);
+    delay_ms(1000);
+    SPI_send_buffer(SPI_CHANNEL, cmd1, 9);
+    SPI_send_buffer(SPI_CHANNEL, end, 1);
+    delay_ms(100);
+    SPI_send_buffer(SPI_CHANNEL, cmd2, 8);
+    SPI_send_buffer(SPI_CHANNEL, end, 1);
+    delay_ms(100);
+    SPI_send_buffer(SPI_CHANNEL, cmd3, 8);
+    SPI_send_buffer(SPI_CHANNEL, end, 1);
+    delay_ms(100);
+    SPI_send_buffer(SPI_CHANNEL, cmd4, 9);
+    SPI_send_buffer(SPI_CHANNEL, end, 1);
+    delay_ms(100);
+    SPI_send_buffer(SPI_CHANNEL, cmd5, 8);
+    SPI_send_buffer(SPI_CHANNEL, end, 1);
+    delay_ms(100);
+    SPI_send_buffer(SPI_CHANNEL, cmd6, 8);
+    SPI_send_buffer(SPI_CHANNEL, end, 1);
+
+    delay_ms(3000);
+
 }
 
 void xbee_send_CAN_message(CAN_log_message_t msg)
@@ -148,6 +183,7 @@ void xbee_send_UDP_packet(uint8_t *payload, uint8_t size)
     //TODO: fix size/length
     //SPI_send_buffer(SPI_CHANNEL, buf, length + 4);
 
+    //7E 00 10 20 00 FF FF FF FF 26 16 26 16 00 00 41 4C 4C 4F 43
     uint8_t message[20] = { 0x7E, 0x00, 0x10, 0x20, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0x26, 0x16, 0x26, 0x16, 0x00, 0x00, 0x41, 0x4C, 0x4C, 0x4F, 0x43 }; //ALLO
     SPI_send_buffer(SPI_CHANNEL, message, 20);
 
