@@ -1,4 +1,9 @@
+//
 // Command definitions
+//
+
+#ifndef COMMANDS_H
+#define COMMANDS_H
 
 // Transmission : command + payload
 // The command + payload bytes are wrapped in a SLIP (Serial Line Internet Protocol) frame before being transmit
@@ -26,3 +31,4 @@
 
 #define CMD_CAN_RX	0x0D
 
+#endif // COMMANDS_H

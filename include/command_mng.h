@@ -1,3 +1,10 @@
+//
+// Command manager
+//
+
+#ifndef COMMAND_MNG_H
+#define COMMAND_MNG_H
+
 #include "lib_config.h"
 
 // Types
@@ -35,3 +42,4 @@ void cmd_slip_and_send(uint8_t *data, uint8_t size);
 void cmd_send_error_code(uint8_t error_code, uint8_t command_id);
 void cmd_send_command(uint8_t command_code, uint8_t *payload, uint8_t size);
 
+#endif // COMMAND_MNG_H

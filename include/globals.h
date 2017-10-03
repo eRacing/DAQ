@@ -8,4 +8,3 @@
 #define FIRMWARE_REVISION	1
 
 #endif // GLOBALS_H
-

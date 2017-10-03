@@ -2,6 +2,9 @@
 //	CAN manager
 //
 
+#ifndef CAN_MNG_H
+#define CAN_MNG_H
+
 #include "can_lib.h"
 
 #define CAN_CHANNEL	0
@@ -31,3 +34,4 @@ void set_CAN_bitrate(CAN_Speed_t speed);
 // Returns the configured CAN bitrate in kbps
 CAN_Speed_t get_CAN_bitrate(void);
 
+#endif // CAN_MNG_H
