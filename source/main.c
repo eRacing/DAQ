@@ -53,8 +53,10 @@ int main(void)
         }
 
         // Test message
-        //CAN_message_t rx_msg = { 42, 4, {'a','b','c','d'} };
-        //CAN_log_message_t logmsg = { rx_msg, 0, msg_number };
+        //CAN_message_t rx_msg_test = { 42, 4, {'a','b','c','d'} };
+        //CAN_log_message_t logmsg_test = { rx_msg_test, 0, msg_number };
+        //xbee_send_CAN_message(logmsg_test);
+        //msg_number++;
         //delay_ms(100);
     }
 

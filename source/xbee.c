@@ -4,7 +4,7 @@
 #define BUFFER_SIZE 22
 
 #define SPI_CHANNEL 0
-#define SPI_BITRATE 9600
+#define SPI_BITRATE 921600
 
 //#define XBEE_RESET GPIO_PIN_7 // Port A
 //#define XBEE_ATN GPIO_PIN_6 // Port A
