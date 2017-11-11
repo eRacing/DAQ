@@ -25,10 +25,6 @@ int main(void)
     // Initialize XBee module
     xbee_init();
 
-    // Test message
-    //CAN_message_t rx_msg = { 42, 4, {'a','b','c','d'} };
-    //CAN_log_message_t logmsg = { rx_msg, getTime_ms(), msg_number };
-
     CAN_message_t rx_msg;
     CAN_log_message_t log_msg;
     uint32_t msg_number = 0;
@@ -36,25 +32,29 @@ int main(void)
 
     while (1)
     {
-        //cmd_process_command();
 
-        // Read CAN message from bus
-        CAN_read_message(CAN_BUS, &rx_msg);
+        while (CAN_get_buffer_size(CAN_BUS) > 0) {
+            // Read CAN message from bus
+            CAN_read_message(CAN_BUS, &rx_msg);
 
-        // Create CAN log message
-        log_msg.msg.id = rx_msg.id;
-        log_msg.msg.length = rx_msg.length;
-        for (i=0; i<rx_msg.length; i++) {
-            log_msg.msg.data[i] = rx_msg.data[i];
+            // Create CAN log message
+            log_msg.msg.id = rx_msg.id;
+            log_msg.msg.length = rx_msg.length;
+            for (i=0; i<rx_msg.length; i++) {
+                log_msg.msg.data[i] = rx_msg.data[i];
+            }
+            log_msg.timestamp = getTime_ms();
+            log_msg.number = msg_number;
+
+            // Send CAN log message to XBee
+            xbee_send_CAN_message(log_msg);
+
+            msg_number++;
         }
-        log_msg.timestamp = getTime_ms();
-        log_msg.number = msg_number;
 
-        // Send CAN log message to xbee
-        xbee_send_CAN_message(log_msg);
-
-        msg_number++;
-
+        // Test message
+        //CAN_message_t rx_msg = { 42, 4, {'a','b','c','d'} };
+        //CAN_log_message_t logmsg = { rx_msg, 0, msg_number };
         //delay_ms(100);
     }
 
