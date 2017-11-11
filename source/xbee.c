@@ -124,7 +124,7 @@ void xbee_send_UDP_packet(uint8_t *payload, uint8_t size)
     buf[3] = (uint8_t) (0x20);
 
     //      - Frame ID
-    buf[4] = (uint8_t) (0x01);
+    buf[4] = (uint8_t) (0x00); // 0 = Won't get a Status frame in return
 
     //      - IPv4 32-bit destination address
     buf[8] = (uint8_t) ip_address;
