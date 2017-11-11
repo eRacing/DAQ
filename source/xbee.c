@@ -1,14 +1,14 @@
-#include "can_mng.h"
-#include "commands.h"
 #include "spi_lib.h"
-#include "timer_lib.h"
+#include "can_mng.h"
 
 #define BUFFER_SIZE 22
-#define SPI_CHANNEL 0
 
-#define XBEE_RESET GPIO_PIN_7 // Port A
-#define XBEE_ATN GPIO_PIN_6 // Port A
-#define XBEE_DOUT GPIO_PIN_0 // Port B
+#define SPI_CHANNEL 0
+#define SPI_BITRATE 9600
+
+//#define XBEE_RESET GPIO_PIN_7 // Port A
+//#define XBEE_ATN GPIO_PIN_6 // Port A
+//#define XBEE_DOUT GPIO_PIN_0 // Port B
 
 static uint32_t ip_address = 0xFFFFFFFF; // IPv4 address for packet transmission
 static uint16_t dest_port = 0x2616;	// UDP port for packet tansmission
@@ -20,52 +20,32 @@ void xbee_send_UDP_packet(uint8_t *payload, uint8_t size);
 
 void xbee_init(void)
 {
-    // src_port = get configuration from EEPROM TODO
-    // dest_port = get configuration from EEPROM TODO
+    //TODO: get src_pourt and dest_port configuration from EEPROM
 
-    // SPI CONFIGURATION
+    // Initialize SPI
     SPI_Config_t spi_config;
     spi_config.cpol_ = 0;
     spi_config.cpha_ = 0;
     spi_config.mode_ = 0;
-    spi_config.bitRate_ = 9600;
+    spi_config.bitRate_ = SPI_BITRATE;
     spi_config.dataWidth_ = 8;
 
     SPI_init(SPI_CHANNEL, spi_config);
 
-    uint8_t start[3] = { '+', '+', '+' };
-    uint8_t end[1] = { 0x0D };
+    // API Command Frames
+    uint8_t cmd_udp1[9] = {0x7E, 0x00, 0x05, 0x08, 0x01, 0x49, 0x50, 0x00, 0x5D};
+    uint8_t cmd_tcp[9] = {0x7E, 0x00, 0x05, 0x08, 0x02, 0x49, 0x50, 0x01, 0x5B};
+    uint8_t cmd_udp2[9] = {0x7E, 0x00, 0x05, 0x08, 0x03, 0x49, 0x50, 0x00, 0x5B};
 
-    uint8_t cmd1[9] = { 0x7E, 0x00, 0x05, 0x09, 0x07, 0x49, 0x50, 0x01, 0x55 };
-    uint8_t cmd2[8] = { 0x7E, 0x00, 0x04, 0x09, 0x08, 0x57, 0x52, 0x45 };
-    uint8_t cmd3[8] = { 0x7E, 0x00, 0x04, 0x09, 0x09, 0x41, 0x43, 0x69 };
-    uint8_t cmd4[9] = { 0x7E, 0x00, 0x05, 0x09, 0x0A, 0x49, 0x50, 0x00, 0x53 };
-    uint8_t cmd5[8] = { 0x7E, 0x00, 0x04, 0x09, 0x0B, 0x57, 0x52, 0x42 };
-    uint8_t cmd6[8] = { 0x7E, 0x00, 0x04, 0x09, 0x0C, 0x41, 0x43, 0x66 };
+    SPI_send_buffer(SPI_CHANNEL, cmd_udp1, 9);
+    SPI_send_buffer(SPI_CHANNEL, cmd_tcp, 9);
+    SPI_send_buffer(SPI_CHANNEL, cmd_udp2, 9);
 
-    delay_ms(2000);
+    uint8_t cmd_port1[10] = {0x7E, 0x00, 0x06, 0x08, 0x04, 0x44, 0x45, 0x26, 0x16, 0x2E};
+    uint8_t cmd_port2[10] = {0x7E, 0x00, 0x06, 0x08, 0x05, 0x43, 0x30, 0x26, 0x16, 0x43};
 
-    SPI_send_buffer(SPI_CHANNEL, start, 3);
-    delay_ms(1000);
-    SPI_send_buffer(SPI_CHANNEL, cmd1, 9);
-    SPI_send_buffer(SPI_CHANNEL, end, 1);
-    delay_ms(100);
-    SPI_send_buffer(SPI_CHANNEL, cmd2, 8);
-    SPI_send_buffer(SPI_CHANNEL, end, 1);
-    delay_ms(100);
-    SPI_send_buffer(SPI_CHANNEL, cmd3, 8);
-    SPI_send_buffer(SPI_CHANNEL, end, 1);
-    delay_ms(100);
-    SPI_send_buffer(SPI_CHANNEL, cmd4, 9);
-    SPI_send_buffer(SPI_CHANNEL, end, 1);
-    delay_ms(100);
-    SPI_send_buffer(SPI_CHANNEL, cmd5, 8);
-    SPI_send_buffer(SPI_CHANNEL, end, 1);
-    delay_ms(100);
-    SPI_send_buffer(SPI_CHANNEL, cmd6, 8);
-    SPI_send_buffer(SPI_CHANNEL, end, 1);
-
-    delay_ms(3000);
+    SPI_send_buffer(SPI_CHANNEL, cmd_port1, 10);
+    SPI_send_buffer(SPI_CHANNEL, cmd_port2, 10);
 
 }
 
@@ -85,7 +65,7 @@ void xbee_send_CAN_message(CAN_log_message_t msg)
     //		- Data (8 bytes, padding of 0 if DLC < 8)
 
     // Command number
-    buf[0] = CMD_CAN_RX;
+    buf[0] = 0x0D; //CMD_CAN_RX;
 
     // Message number
     buf[4] = (uint8_t) msg.number;
@@ -130,7 +110,7 @@ void xbee_send_UDP_packet(uint8_t *payload, uint8_t size)
     uint8_t i;
     uint8_t c = 0;
     uint16_t length = size + 12;
-    uint8_t buf[100]; //length+2 pas de dynamique
+    uint8_t buf[50]; //length+2 pas de dynamique
     uint8_t checksum;
 
     //		- Start delimiter (1 byte)
@@ -179,13 +159,12 @@ void xbee_send_UDP_packet(uint8_t *payload, uint8_t size)
     }
     checksum = 0xFF - c;
     buf[3 + length] = checksum;
+    //TODO: verify checksum
 
-    //TODO: fix size/length
-    //SPI_send_buffer(SPI_CHANNEL, buf, length + 4);
+    SPI_send_buffer(SPI_CHANNEL, buf, length + 4);
 
-    //7E 00 10 20 00 FF FF FF FF 26 16 26 16 00 00 41 4C 4C 4F 43
-    uint8_t message[20] = { 0x7E, 0x00, 0x10, 0x20, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0x26, 0x16, 0x26, 0x16, 0x00, 0x00, 0x41, 0x4C, 0x4C, 0x4F, 0x43 }; //ALLO
-    SPI_send_buffer(SPI_CHANNEL, message, 20);
+    //uint8_t message[20] = {0x7E, 0x00, 0x10, 0x20, 0x01, 0xFF, 0xFF, 0xFF, 0xFF, 0x26, 0x16, 0x26, 0x16, 0x00, 0x00, 0x41, 0x4C, 0x4C, 0x4F, 0x42};
+    //SPI_send_buffer(SPI_CHANNEL, message, 20);
 
 }
 
