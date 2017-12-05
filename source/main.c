@@ -4,8 +4,7 @@
 #include "can_mng.h"
 #include "xbee.h"
 
-#define CAN_BUS 0 
-#define CAN_BITRATE BITRATE_500000
+#define CAN_BUS 0
 
 int main(void)
 {
@@ -16,13 +15,18 @@ int main(void)
     timer_init();
 
     // Initialize CAN
-    CAN_Config_t can_config = { CAN_BITRATE, 0, OVERWRITE_OLDEST_MESSAGE };
+    CAN_Config_t can_config;
+    can_config.bit_rate = BITRATE_500000;
+    can_config.mask = 0;
+    can_config.buffer_behaviour = OVERWRITE_OLDEST_MESSAGE;
+    can_config.pin_selection = 0;
     CAN_init(CAN_BUS, can_config);
 
     // Initialize EEPROM
     // TODO
 
     // Initialize XBee module
+    delay_ms(5000);
     xbee_init();
 
     CAN_message_t rx_msg;
@@ -53,11 +57,11 @@ int main(void)
         }
 
         // Test message
-        //CAN_message_t rx_msg_test = { 42, 4, {'a','b','c','d'} };
-        //CAN_log_message_t logmsg_test = { rx_msg_test, 341245, msg_number };
-        //xbee_send_CAN_message(logmsg_test);
-        //msg_number++;
-        //delay_ms(100);
+//        CAN_message_t rx_msg_test = { 42, 4, {'a','b','c','d'} };
+//        CAN_log_message_t logmsg_test = { rx_msg_test, 341245, msg_number };
+//        xbee_send_CAN_message(logmsg_test);
+//        msg_number++;
+//        delay_ms(100);
     }
 
 }

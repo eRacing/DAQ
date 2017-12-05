@@ -47,6 +47,9 @@ void xbee_init(void)
     SPI_send_buffer(SPI_CHANNEL, cmd_port1, 10);
     SPI_send_buffer(SPI_CHANNEL, cmd_port2, 10);
 
+    // Set SPI bitrate
+    //uint8_t cmd_baudrate[11] = {0x7E, 0x00, 0x07, 0x08, 0x06, 0x42, 0x44, 0x5B, 0x8D, 0x80, 0x03};
+    //SPI_send_buffer(SPI_CHANNEL, cmd_baudrate, 11);
 }
 
 void xbee_send_CAN_message(CAN_log_message_t msg)
