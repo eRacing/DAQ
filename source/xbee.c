@@ -62,7 +62,7 @@ void xbee_send_CAN_message(CAN_log_message_t msg)
     //	Packet format (in order) :
     //		- CMD_CAN_RX (1 byte)
     //		- message number (4 bytes, uint32, big endian)
-    //		- timestamp (4 bytes, uint32, tenth of ms, big endian)
+    //		- timestamp (4 bytes, uint32, ms, big endian)
     //		- CAN msg ID (4 bytes, uint32)
     //		- DLC (1 byte, uint8)
     //		- Data (8 bytes, padding of 0 if DLC < 8)
