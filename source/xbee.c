@@ -50,6 +50,27 @@ void xbee_init(void)
     // Set SPI bitrate
     //uint8_t cmd_baudrate[11] = {0x7E, 0x00, 0x07, 0x08, 0x06, 0x42, 0x44, 0x5B, 0x8D, 0x80, 0x03};
     //SPI_send_buffer(SPI_CHANNEL, cmd_baudrate, 11);
+
+    // set to STA
+    // 7E 00 05 08 00 43 45 02 6D
+    //uint8_t cmd_sta[9] = {0x7E, 0x00, 0x05, 0x08, 0x00, 0x43, 0x45, 0x02, 0x6D};
+    //SPI_send_buffer(SPI_CHANNEL, cmd_sta, 9);
+
+    // set SSID
+    // 7E 00 13 08 00 49 44 50 4F 4C 59 5F 49 4E 54 45 52 54 55 42 45 53 C2
+    //uint8_t cmd_ssid[23] = {0x7E, 0x00, 0x13, 0x08, 0x00, 0x49, 0x44, 0x50, 0x4F, 0x4C, 0x59, 0x5F, 0x49, 0x4E, 0x54, 0x45, 0x52, 0x54, 0x55, 0x42, 0x45, 0x53, 0xC2};
+    //SPI_send_buffer(SPI_CHANNEL, cmd_ssid, 23);
+
+    // set WPA2
+    // 7E 00 05 08 00 45 45 02 6B
+    //uint8_t cmd_wpa2[9] = {0x7E, 0x00, 0x05, 0x08, 0x00, 0x45, 0x45, 0x02, 0x6B};
+    //SPI_send_buffer(SPI_CHANNEL, cmd_wpa2, 9);
+
+    //set pass
+    // 7E 00 0F 08 00 50 4B 70 6F 6C 79 77 6F 77 32 30 31 37 71
+    //uint8_t cmd_pass[19] = {0x7E, 0x00, 0x0F, 0x08, 0x00, 0x50, 0x4B, 0x70, 0x6F, 0x6C, 0x79, 0x77, 0x6F, 0x77, 0x32, 0x30, 0x31, 0x37, 0x71};
+    //SPI_send_buffer(SPI_CHANNEL, cmd_pass, 19);
+
 }
 
 void xbee_send_CAN_message(CAN_log_message_t msg)
@@ -127,7 +148,7 @@ void xbee_send_UDP_packet(uint8_t *payload, uint8_t size)
     buf[3] = (uint8_t) (0x20);
 
     //      - Frame ID
-    buf[4] = (uint8_t) (0x00); // 0 = Won't get a Status frame in return
+    buf[4] = (uint8_t) payload[4];//(0x00); // 0 = Won't get a Status frame in return
 
     //      - IPv4 32-bit destination address
     buf[8] = (uint8_t) ip_address;
