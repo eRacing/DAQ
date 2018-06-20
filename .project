@@ -24,4 +24,14 @@
 		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<variableList>
+		<variable>
+			<name>ERACING_LIB</name>
+			<value>$%7BPROJECT_LOC%7D/../elec/Source_Code/libraries</value>
+		</variable>
+		<variable>
+			<name>TIVAWARE_INSTALL</name>
+			<value>$%7BTI_PRODUCTS_DIR%7D/TivaWare_C_Series-2.1.4.178</value>
+		</variable>
+	</variableList>
 </projectDescription>

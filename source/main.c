@@ -15,8 +15,8 @@
 #include "driverlib/systick.h"
 #include "driverlib/eeprom.h"
 
-#include "fatfs/src/ff.h"
-#include "fatfs/src/diskio.h"
+#include "fatfs/ff.h"
+#include "fatfs/diskio.h"
 
 #include "system_lib.h"
 #include "timer_lib.h"
@@ -185,7 +185,7 @@ int main(void)
 
     itoa(file_number, file_name+4);
 
-    result = f_mount(0, &fs);
+    result = f_mount(&fs,"",0);
     result = f_open(&file, file_name, (FA_WRITE | FA_CREATE_ALWAYS));
 
     CAN_message_t rx_msg;
