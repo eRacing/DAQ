@@ -1,0 +1,1 @@
+"./buffer.obj" "./can_lib.obj" "./io_lib.obj" "./main.obj" "./timer_lib.obj" "./fatfs_lib/diskio.obj" "./fatfs_lib/ff.obj" "./fatfs_lib/ffsystem.obj" "./fatfs_lib/ffunicode.obj" "./fatfs_lib/tm4c123gh6pm_startup_ccs.obj" "../tm4c123gh6pm.cmd" -llibc.a -l"/home/gabriel/Workspace/eracing/elec/Source_Code/tiva-c-master/driverlib/ccs/Debug/driverlib.lib" 
