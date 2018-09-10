@@ -1,0 +1,6 @@
+Antenne réceptrice (TP-Link TL-WN722N)
+Antenne émetrice : antenne blanche
+Température : -1°C
+Humidité : ~58%
+
+Position du module Wifi : 45°26.215'N 73°34.966'O

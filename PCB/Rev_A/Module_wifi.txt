@@ -1,0 +1,27 @@
+﻿Field=Designator~String~Designator~123|Field=Part_Number~String~Part_Number~123|Field=Description~String~Description~199|Field=Quantity~Integer~Quantity~153|Field=Supplier Link~String~Supplier Link~152|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~Module_wifi.PrjPcb|ReportField=ProjectFullPath~D:\Vbox_Partage\eRacing\Electrical\DAQ\Module_WIFI\PCB\Module_wifi.PrjPcb|ReportField=Title~Bill of Materials For Project [Module_wifi.PrjPcb] (No PCB Document Selected)|ReportField=TotalQuantity~50|ReportField=ReportTime~13:35:16|ReportField=ReportDate~2015-08-20|ReportField=ReportDateTime~2015-08-20 13:35:16|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=Application_BuildNumber~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~2015-08-20|ReportField=CurrentTime~13:16:55|ReportField=Date~|ReportField=DocumentFullPathAndName~D:\Vbox_Partage\eRacing\Electrical\DAQ\Module_WIFI\PCB\module_wifi.SchDoc|ReportField=DocumentName~module_wifi.SchDoc|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~2015-08-20|ReportField=Organization~|ReportField=ProjectName~Module_wifi.PrjPcb|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~|ReportField=SheetTotal~|ReportField=Time~|ReportField=Title~|ReportField=DataSourceFileName~Module_wifi.PrjPcb|ReportField=DataSourceFullPath~D:\Vbox_Partage\eRacing\Electrical\DAQ\Module_WIFI\PCB\Module_wifi.PrjPcb
+A1|R-78E5.0-0.5|5V DCDC|1|http://www.digikey.com/product-detail/en/R-78E5.0-0.5/945-1648-5-ND/2834904
+A2|HLK-RM04|Wifi Module|1|http://www.hlktech.net/product_detail.php?ProId=39
+C1, C2, C11, C15|CGA3E1X7R1E105M080AC|1uF ceramic capacitor|4|http://www.digikey.com/product-detail/en/CGA3E1X7R1E105M080AC/445-12548-1-ND/3954214
+C3, C6, C7, C8, C9, C12, C13, C18|CGA3E2X7R1H104K080AA|0.1uF ceramic capacitor|8|http://www.digikey.com/product-detail/en/CGA3E2X7R1H104K080AA/445-5666-1-ND/2443706, http://www.digikey.com/product-detail/en/CGA3E2X7R1H104K080AA/445-5666-1-ND/2443706, http://www.digikey.com/product-detail/en/CGA3E2X7R1H104K080AA/445-5666-1-ND/2443706, http://www.digikey.com/product-detail/en/CGA3E2X7R1H104K080AA/445-5666-1-ND/2443706, http://www.digikey.com/product-detail/en/CGA3E2X7R1H104K080AA/445-5666-1-ND/2443706, http://www.digikey.com/product-detail/en/CGA3E2X7R1H104K080AA/445-5666-1-ND/2443706, http://www.digikey.com/product-detail/en/CGA3E2X7R1H104K080AA/445-5666-1-ND/2443706, http://www.digikey.ca/product-detail/en/CGA3E2X7R1H104K080AA/445-5666-1-ND/2443706
+C4, C5|CGA3E2C0G1H100D080AA|10pF ceramic capacitor|2|http://www.digikey.com/product-detail/en/CGA3E2C0G1H100D080AA/445-5628-1-ND/2443668
+C10|CGA3E2X7R1H103K080AA|0.01uF ceramic capacitor|1|http://www.digikey.com/product-detail/en/CGA3E2X7R1H103K080AA/445-5662-1-ND/2443702
+C14, C17, C19, C20|CGA3E1X7R0J225K080AC|2.2uF ceramic capacitor|4|http://www.digikey.ca/product-detail/en/CGA3E1X7R0J225K080AC/445-6933-1-ND/2672951
+C16|CGA3E2X7R1H473K080AA|47nF ceramic capacitor|1|http://www.digikey.ca/product-detail/en/CGA3E2X7R1H473K080AA/445-5664-1-ND/2443704
+D1|LTST-C150KGKT|Green LED 1206|1|http://www.digikey.com/product-detail/en/LTST-C150KGKT/160-1404-1-ND/386759
+D2|LTST-C150KGKT|Green LED 1206|1|http://www.digikey.com/product-detail/en/LTST-C150KGKT/160-1404-1-ND/386759
+F1|0154010.DR|Nano 452 fuse holder, surface mount|1|http://www.digikey.ca/product-search/en?pv66=1&FV=ffec3b86%2Cffec3bb8%2Cffec4f0c%2Cffec8a72%2Cfff4000a%2Cfff8003d%2Cfffc0012%2C1c0002%2C1c0003%2C1c0006&mnonly=0&newproducts=0&ColumnSort=0&page=1&stock=1&quantity=0&ptm=0&fid=0&pageSize=500
+J1||Header, 2-Pin|1|
+J2||JTAG header, MCU programming|1|
+J3||Header, 2-Pin|1|
+R1, R3|CRCW060310K0JNEA|10 kOhms resistor|2|http://www.digikey.ca/product-detail/en/CRCW060310K0JNEA/541-10KGCT-ND/1179393
+R2, R9|ESR03EZPJ221|220 Ohms resistor, 1/4W|2|http://www.digikey.ca/product-detail/en/ESR03EZPJ221/RHM220DCT-ND/1983788
+R4, R5|ESR03EZPJ620|60 Ohms resistor, 1/4W|2|http://www.digikey.ca/product-detail/en/ESR03EZPJ620/RHM62DCT-ND/1983794
+R7, R8|ESR03EZPJ101|100 Ohms resistor, 1/4W|2|http://www.digikey.ca/product-detail/en/ESR03EZPJ101/RHM100DCT-ND/1983776
+R10, R11|CRCW06034K70JNEA|4.7 kOhms resistor|2|http://www.digikey.ca/product-detail/en/CRCW06034K70JNEA/541-4.7KGCT-ND/1179385
+R12, R13, R14, R15|CRCW0603100KJNEA|100 kOhm resistor|4|http://www.digikey.ca/product-detail/en/CRCW0603100KJNEA/541-100KGCT-ND/1179417
+R16|CRCW06030000Z0EA|0 Ohm resistor|1|http://www.digikey.ca/product-detail/en/CRCW06030000Z0EA/541-0.0GCT-ND/1179296
+SW1, SW2, SW3|147873-1|Pushbutton switch SPST|3|http://ca.mouser.com/ProductDetail/TE-Connectivity-Alcoswitch/147873-1/?qs=sGAEpiMZZMvxtGF7dlGNpsxRhg8g8FqHC2R98arEfD8%3d
+U1|TM4C123GH6PM|32 bit Microcontroller|1|http://www.ti.com/product/TM4C123GH6PM/samplebuy
+U2|HVDA551-Q1|CAN Transceiver|1|http://www.ti.com/product/HVDA551-Q1/samplebuy
+X1|34793-0080|Molex Mini50, 8 position, single row, right angle|1|
+Y1|NX5032GA-16.000M-LN-CD-1|Crystal Oscillator 16 MHz|1|http://www.digikey.com/product-detail/en/NX5032GA-16.000000MHZ-LN-CD-1/644-1037-1-ND/1128909

@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    android:paddingLeft="15dp"
+	    android:paddingRight="15dp"
+	    android:paddingTop="15dp" >
+
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="right"
+		    android:gravity="right" >
+
+			<TextView
+			    android:id="@+id/txt_wifi_status"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_gravity="right"
+			    android:text="DÉCONNECTÉ"
+			    android:textColor="#ff0000" />
+				
+
+		</LinearLayout>
+
+	    <TextView
+	        android:id="@+id/lbl_title_gen_info"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingBottom="10dp"
+	        android:text="Informations générales"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+
+	        <TextView
+	            android:id="@+id/txt_total_voltage"
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:background="#b0b0b0"
+	            android:gravity="center"
+	            android:minHeight="60dp"
+	            android:paddingRight="2dp"
+	            android:text="N/D V"
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:textSize="35sp" />
+
+	        <TextView
+	            android:id="@+id/textView5"
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="0.07"
+	            android:width="2dp" />
+
+	        <TextView
+	            android:id="@+id/txt_speed"
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:background="#b0b0b0"
+	            android:gravity="center"
+	            android:minHeight="60dp"
+	            android:paddingLeft="2dp"
+	            android:text="N/D km/h"
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:textSize="35sp" />
+	    </LinearLayout>
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:paddingBottom="0dp" >
+
+	        <TextView
+	            android:id="@+id/lbl_total_voltage"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="0.50"
+	            android:gravity="center"
+	            android:text="Tension totale" />
+
+	        <TextView
+	            android:id="@+id/TextView08"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="0.50"
+	            android:gravity="center"
+	            android:text="Vitesse actuelle" />
+
+	    </LinearLayout>
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:paddingTop="10dp" >
+	    </LinearLayout>
+
+	    <TextView
+	        android:id="@+id/TextView01"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingBottom="10dp"
+	        android:paddingTop="15dp"
+	        android:text="Batterie"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+	    <ProgressBar
+	        android:id="@+id/progressBar"
+	        style="?android:attr/progressBarStyleHorizontal"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="0.90"
+	        android:maxHeight="30dp"
+	        android:minHeight="30dp"
+	        android:paddingBottom="0dp"
+	        android:paddingRight="0dp"
+	        android:paddingTop="0dp"
+	        android:progress="0"
+	        android:progressDrawable="@drawable/progressbar" />
+
+	    <TextView
+	        android:id="@+id/textView6"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:text="Tension totale" />
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:paddingBottom="5dp"
+	        android:paddingTop="5dp" >
+
+	        <TextView
+	            android:id="@+id/TextView09"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:paddingBottom="10dp"
+	            android:text="Température moy. de la batterie : "
+	            android:textSize="15sp" />
+
+	        <TextView
+	            android:id="@+id/txt_temp_batt"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="right"
+	            android:text="N/D°C"
+	            android:textSize="20sp" />
+
+	    </LinearLayout>
+
+	    <TableLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" >
+
+	        <TableRow
+	            android:id="@+id/tableRow1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="#b0b0b0"
+	            android:padding="5dp" >
+
+	            <TextView
+	                android:id="@+id/textView2"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="Cellule"
+	                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	            <TextView
+	                android:id="@+id/TextView13"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="Tension"
+	                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	            <TextView
+	                android:id="@+id/TextView14"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="Température"
+	                android:textAppearance="?android:attr/textAppearanceMedium" />
+	        </TableRow>
+
+	        <TableRow
+	            android:id="@+id/tableRow2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+
+	            <TextView
+	                android:id="@+id/textView1"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="top"
+	                android:layout_marginLeft="10dp"
+	                android:layout_weight="1"
+	                android:text="M1 C1" />
+
+	            <TextView
+	                android:id="@+id/textView3"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="top"
+	                android:layout_weight="1"
+	                android:text="3,78 V" />
+
+	            <TextView
+	                android:id="@+id/textView4"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="top"
+	                android:layout_weight="1"
+	                android:text="24,3°C" />
+	        </TableRow>
+
+	        <TableRow
+	            android:id="@+id/tableRow3"
+	            android:background="#C0C0C0"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+
+	            <TextView
+	                android:id="@+id/TextView15"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dp"
+	                android:layout_weight="1"
+	                android:text="M1 C2" />
+
+	            <TextView
+	                android:id="@+id/TextView17"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="3,76 V" />
+
+	            <TextView
+	                android:id="@+id/TextView16"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="24,1°C" />
+	        </TableRow>
+
+	        <TableRow
+	            android:id="@+id/tableRow4"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+
+	            <TextView
+	                android:id="@+id/TextView18"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dp"
+	                android:layout_weight="1"
+	                android:text="M1 C3" />
+
+	            <TextView
+	                android:id="@+id/TextView19"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="3,77 V" />
+
+	            <TextView
+	                android:id="@+id/TextView20"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="24,3°C" />
+	        </TableRow>
+
+	        <TableRow
+	            android:id="@+id/tableRow5"
+	            android:background="#C0C0C0"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+
+	            <TextView
+	                android:id="@+id/TextView24"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dp"
+	                android:layout_weight="1"
+	                android:text="M1 C4" />
+
+	            <TextView
+	                android:id="@+id/TextView26"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="3,78 V" />
+
+	            <TextView
+	                android:id="@+id/TextView25"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="24,7°C" />
+	        </TableRow>
+
+	        <TableRow
+	            android:id="@+id/tableRow6"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+
+	            <TextView
+	                android:id="@+id/TextView23"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dp"
+	                android:layout_weight="1"
+	                android:text="M1 C5" />
+
+	            <TextView
+	                android:id="@+id/TextView22"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="3,76 V" />
+
+	            <TextView
+	                android:id="@+id/TextView21"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="25,2°C" />
+	        </TableRow>
+
+	        <TableRow
+	            android:id="@+id/tableRow7"
+	            android:background="#C0C0C0"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+
+	            <TextView
+	                android:id="@+id/TextView27"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dp"
+	                android:layout_weight="1"
+	                android:text="M1 C6" />
+
+	            <TextView
+	                android:id="@+id/TextView29"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="3,78 V" />
+
+	            <TextView
+	                android:id="@+id/TextView28"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="25,3°C" />
+	        </TableRow>
+
+	        <TableRow
+	            android:id="@+id/tableRow8"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+
+	            <TextView
+	                android:id="@+id/TextView32"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dp"
+	                android:layout_weight="1"
+	                android:text="M1 C7" />
+
+	            <TextView
+	                android:id="@+id/TextView30"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="3,78 V" />
+
+	            <TextView
+	                android:id="@+id/TextView31"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="24,9°C" />
+	        </TableRow>
+
+	        <TableRow
+	            android:id="@+id/tableRow9"
+	            android:background="#C0C0C0"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+
+	            <TextView
+	                android:id="@+id/TextView35"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dp"
+	                android:layout_weight="1"
+	                android:text="M1 C8" />
+
+	            <TextView
+	                android:id="@+id/TextView33"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="3,77 V" />
+
+	            <TextView
+	                android:id="@+id/TextView34"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="24,6°C" />
+	        </TableRow>
+
+	        <TableRow
+	            android:id="@+id/tableRow10"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+
+	            <TextView
+	                android:id="@+id/TextView38"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dp"
+	                android:layout_weight="1"
+	                android:text="M1 C9" />
+
+	            <TextView
+	                android:id="@+id/TextView36"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="3,77 V" />
+
+	            <TextView
+	                android:id="@+id/TextView37"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="24,3°C" />
+	        </TableRow>
+
+	        <TableRow
+	            android:id="@+id/tableRow11"
+	            android:background="#C0C0C0"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+
+	            <TextView
+	                android:id="@+id/TextView41"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dp"
+	                android:layout_weight="1"
+	                android:text="M1 C10" />
+
+	            <TextView
+	                android:id="@+id/TextView39"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="3,78 V" />
+
+	            <TextView
+	                android:id="@+id/TextView40"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="24,1°C" />
+	        </TableRow>
+
+	        <TableRow
+	            android:id="@+id/tableRow12"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+
+	            <TextView
+	                android:id="@+id/TextView42"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dp"
+	                android:layout_weight="1"
+	                android:text="M1 C12" />
+
+	            <TextView
+	                android:id="@+id/TextView43"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="3,77 V" />
+
+	            <TextView
+	                android:id="@+id/TextView44"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="24,2°C" />
+	        </TableRow>
+	    </TableLayout>
+
+	    <TextView
+	        android:id="@+id/TextView02"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingBottom="10dp"
+	        android:paddingTop="15dp"
+	        android:text="Messages"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:paddingTop="10dp" >
+
+	        <TextView
+	            android:id="@+id/TextView12"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Statut de l&apos;interlock : "
+	            android:textSize="15sp" />
+
+	        <TextView
+	            android:id="@+id/txt_interlock_state"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="N/D"
+	            android:textSize="20sp" />
+
+	    </LinearLayout>
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:paddingTop="10dp" >
+
+	        <TextView
+	            android:id="@+id/TextView04"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="IMD : "
+	            android:textSize="15sp" />
+
+	        <TextView
+	            android:id="@+id/TextView03"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="OK"
+	            android:textSize="20sp" />
+
+	    </LinearLayout>
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:paddingTop="10dp" >
+
+	        <TextView
+	            android:id="@+id/TextView05"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:paddingBottom="20dp"
+	            android:text="BMS : "
+	            android:textSize="15sp" />
+
+	        <TextView
+	            android:id="@+id/TextView06"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="En erreur"
+	            android:textSize="20sp" />
+
+	    </LinearLayout>
+
+	</LinearLayout>
+
+</ScrollView>
