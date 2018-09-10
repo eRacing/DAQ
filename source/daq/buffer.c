@@ -1,11 +1,9 @@
 #include <string.h>
-#include "buffer.h"
+#include <daq/buffer.h>
 
 uint8_t buffer_insert(struct buffer* buffer, struct buffer_entry* entry) {
-#ifndef OPTIMIZE
     /* make sure the buffer isn't full */
     if(buffer->full) return 1;
-#endif
 
     /* increase the next position to write */
     uint8_t pos = buffer->pos++;
