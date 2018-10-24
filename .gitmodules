@@ -1,0 +1,6 @@
+[submodule "lib/eracing-lib"]
+	path = lib/eracing-lib
+	url = https://git.aep.polymtl.ca/eRacing/eracing-lib.git
+[submodule "libtivaware"]
+	path = libtivaware
+	url = https://git.step.polymtl.ca/eRacing/libtivaware.git
