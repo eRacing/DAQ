@@ -3,3 +3,12 @@ build/
 
 # ignore object files
 *.o
+
+# ignore pcb history files
+pcb/History/
+
+# ignore pcb preview files, but doesn't seem to work
+pcb/__Previews
+
+# ignore project logs for pcb
+pcb/Project Logs for daq
