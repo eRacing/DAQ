@@ -12,3 +12,6 @@ pcb/__Previews
 
 # ignore project logs for pcb
 pcb/Project Logs for daq
+
+#ignore debug pcb file
+pcb/debug.log
