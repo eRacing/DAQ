@@ -13,5 +13,5 @@ pcb/Project Logs for daq
 #ignore debug pcb file
 pcb/debug.log
 
-#ignore previews (doesn't work)
-*.SchDocPreview
+#ignore previews
+pcb/__Previews/
