@@ -4,3 +4,6 @@
 [submodule "libtivaware"]
 	path = libtivaware
 	url = https://git.step.polymtl.ca/eRacing/libtivaware.git
+[submodule "libfatfs"]
+	path = libfatfs
+	url = https://git.step.polymtl.ca/eRacing/libfatfs.git
