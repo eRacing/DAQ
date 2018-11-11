@@ -1,5 +1,5 @@
 #include <string.h>
-#include <daq/buffer.h>
+#include <buffer.h>
 
 uint8_t buffer_insert(struct buffer* buffer, struct buffer_entry* entry) {
     /* make sure the buffer isn't full */
