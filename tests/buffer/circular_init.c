@@ -1,5 +1,5 @@
 #include <assert.h>
-#include <daq/buffer.h>
+#include <buffer.h>
 
 int main() {
     struct circular circular = CIRCULAR_INIT;
