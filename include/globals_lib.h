@@ -1,3 +1,6 @@
+#ifndef INCLUDE_GLOBALS_LIB_H
+#define INCLUDE_GLOBALS_LIB_H
+
 /*
  * globals_lib.h
  *
@@ -21,5 +24,7 @@
 #include "driverlib/fpu.h"
 
 
+/* Boolean type */
+typedef enum { FALSE = 0, TRUE } BOOL;
 
-
+#endif
