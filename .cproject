@@ -89,7 +89,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="libfatfs/source/diskio.c|libtivaware/windows_drivers|libtivaware/usblib|libtivaware/sensorlib|libtivaware/IQmath|libtivaware/grlib|libtivaware/docs|libfatfs/documents|tests|libtivaware/utils|libtivaware/boot_loader|libtivaware/cc3100-sdk|libtivaware/examples|libtivaware/tools|libtivaware/third_party|libtivaware/nfclib" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="libtivaware/utils|libtivaware/usblib|libtivaware/tools|libtivaware/sensorlib|libtivaware/nfclib|libtivaware/IQmath|libtivaware/grlib|libtivaware/examples|libtivaware/docs|libtivaware/cc3100-sdk|libtivaware/boot_loader|libfatfs/source/diskio.c|libfatfs/documents|tests" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
