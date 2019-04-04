@@ -10,8 +10,12 @@ pcb/History/
 # ignore project logs for pcb
 pcb/Project Logs for daq
 
-#ignore debug pcb file
+# ignore debug pcb file
 pcb/debug.log
 
-#ignore previews
+# ignore previews
 pcb/__Previews/
+
+# ignore CCS directories
+Debug/
+.settings/
