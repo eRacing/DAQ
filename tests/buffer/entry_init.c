@@ -1,5 +1,5 @@
 #include <assert.h>
-#include <daq/buffer.h>
+#include <buffer.h>
 
 int main() {
     struct buffer_entry entry = BUFFER_ENTRY_INIT;

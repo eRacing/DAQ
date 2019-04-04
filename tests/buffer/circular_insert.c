@@ -1,5 +1,5 @@
 #include <assert.h>
-#include <daq/buffer.h>
+#include <buffer.h>
 
 #define LOSS_PACKETS 1000
 
