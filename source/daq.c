@@ -33,7 +33,14 @@ void daqInit() {
 
     /* enable GPIO */
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
+    while(!(SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOD)));
     GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, DEBUG_LED_RED | DEBUG_LED_YELLOW | DEBUG_LED_GREEN);
+
+    /* enable SSI */
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI2);
+    while(!(SysCtlPeripheralReady(SYSCTL_PERIPH_SSI2)));
+
+    sdcardInit();
 }
 
 void daqLoop() {
