@@ -1,2 +1,2 @@
 # add all the test directories below
-add_subdirectory(buffer)
+add_subdirectory(ringbuffer)
