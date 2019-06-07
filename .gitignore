@@ -19,3 +19,4 @@ pcb/__Previews/
 # ignore CCS directories
 Debug/
 .settings/
+.launches/
