@@ -3,8 +3,6 @@
 #include <config.h>
 #include <stdint.h>
 #include <stdbool.h>
-
-#define RINGBUFFER_DECLARE_DATA_TYPE
 #include <can.h>
 
 #include <driverlib/gpio.h>
@@ -15,11 +13,23 @@
 #include <inc/tm4c123gh6pm.h>
 #include <inc/hw_memmap.h>
 
+#define RINGBUFFER_DECLARE_DATA_TYPE
+#include <ringbuffer.h>
+
 //////////
 // Data //
 //////////
 
 #define RX_OBJ_ID 1
+
+RINGBUFFER_DECLARE(
+    can,
+    struct messsage,
+    CAN_RINGBUFFER_SUBBUF_SIZE,
+    CAN_RINGBUFFER_SUBBUF_COUNT
+)
+
+static struct can_rb ringbuffer;
 
 ///////////////
 // Interrupt //
@@ -37,6 +47,19 @@ void canInterrupt() {
         CANIntClear(CAN0_BASE, status);
         return;
     }
+
+    struct messsage msg;
+    tCANMsgObject canObject;
+    canObject.pui8MsgData = msg.data;
+    CANMessageGet(CAN0_BASE, RX_OBJ_ID, &canObject, 0);
+    if(canObject.ui32Flags != MSG_OBJ_NEW_DATA) {
+        return;
+    }
+
+    /* TODO: get timestamp */
+
+    msg.id = canObject.ui32MsgID;
+    can_rb_insert(&ringbuffer, &msg);
 }
 
 ////////////////
@@ -44,6 +67,8 @@ void canInterrupt() {
 ////////////////
 
 void canInit() {
+    ringbuffer = can_rb_init;
+
     /* initialize the GPIO peripheral for RX/TX pins */
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
     while(!(SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOE)));
@@ -79,4 +104,13 @@ void canInit() {
         .ui32MsgLen = 8,
     };
     CANMessageSet(CAN0_BASE, RX_OBJ_ID, &rxBoxConfig, MSG_OBJ_TYPE_RX);
+}
+
+void* canGetSubbufferBlocking(size_t* size) {
+    size[0] = sizeof(struct can_rb_subbuf);
+    return (void*) can_rb_get_subbuf(&ringbuffer);
+}
+
+void canFlushSubbuffer(void* subbuf) {
+    can_rb_subbuf_flush((struct can_rb_subbuf*) subbuf);
 }

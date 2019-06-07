@@ -2,8 +2,8 @@
 #define INCLUDE_CAN_H_
 
 #include <stdint.h>
-#include <ringbuffer.h>
 #include <config.h>
+#include <stddef.h>
 
 struct messsage {
     uint32_t timestamp;
@@ -11,13 +11,8 @@ struct messsage {
     uint8_t data[8];
 };
 
-RINGBUFFER_DECLARE(
-    can,
-    struct messsage,
-    CAN_RINGBUFFER_SUBBUF_SIZE,
-    CAN_RINGBUFFER_SUBBUF_COUNT
-)
-
 void canInit();
+void* canGetSubbufferBlocking(size_t* size);
+void canFlushSubbuffer(void* subbuf);
 
 #endif
