@@ -37,20 +37,25 @@ void daqInit() {
 
 void daqLoop() {
     while(1) {
-        /* TODO: do something useful with the DAQ */
+        void* subbuf;
+        size_t size;
+
         ledEnable(LED_RED);
         ledDisable(LED_YELLOW);
         ledDisable(LED_GREEN);
-        SysCtlDelayMS(500);
+        subbuf = canGetSubbufferBlocking(&size);
+        sdcardWrite(subbuf, size);
 
         ledDisable(LED_RED);
         ledEnable(LED_YELLOW);
         ledDisable(LED_GREEN);
-        SysCtlDelayMS(500);
+        subbuf = canGetSubbufferBlocking(&size);
+        sdcardWrite(subbuf, size);
 
         ledDisable(LED_RED);
         ledDisable(LED_YELLOW);
         ledEnable(LED_GREEN);
-        SysCtlDelayMS(500);
+        subbuf = canGetSubbufferBlocking(&size);
+        sdcardWrite(subbuf, size);
     }
 }
