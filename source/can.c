@@ -9,7 +9,7 @@
 #include <driverlib/interrupt.h>
 #include <driverlib/pin_map.h>
 #include <driverlib/sysctl.h>
-#include <inc/tm4c123gh6pz.h>
+#include <inc/tm4c123gh6pm.h>
 #include <inc/hw_memmap.h>
 
 //////////

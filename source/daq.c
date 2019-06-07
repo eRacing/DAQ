@@ -7,6 +7,9 @@
 
 #include <driverlib/sysctl.h>
 #include <driverlib/interrupt.h>
+#include <driverlib/rom.h>
+
+#include <inc/tm4c123gh6pm.h>
 
 ////////////////
 // Public API //
