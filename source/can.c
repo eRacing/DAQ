@@ -1,8 +1,11 @@
-#include <can.h>
+
 #include <utils.h>
 #include <config.h>
 #include <stdint.h>
 #include <stdbool.h>
+
+#define RINGBUFFER_DECLARE_DATA_TYPE
+#include <can.h>
 
 #include <driverlib/gpio.h>
 #include <driverlib/can.h>
