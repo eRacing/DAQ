@@ -16,15 +16,24 @@
 // Data //
 //////////
 
-
+#define RX_OBJ_ID 1
 
 ///////////////
 // Interrupt //
 ///////////////
 
-//void canInterrupt() {
-void CANIntHandler() {
-    while(1);
+void canInterrupt() {
+    uint32_t status = CANIntStatus(CAN0_BASE, CAN_INT_STS_CAUSE);
+
+    if(status == CAN_INT_INTID_STATUS) {
+        status = CANStatusGet(CAN0_BASE, CAN_STS_CONTROL);
+        return;
+    }
+
+    if(status != RX_OBJ_ID) {
+        CANIntClear(CAN0_BASE, status);
+        return;
+    }
 }
 
 ////////////////
@@ -66,5 +75,5 @@ void canInit() {
         .ui32Flags = (MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER),
         .ui32MsgLen = 8,
     };
-    CANMessageSet(CAN0_BASE, 1, &rxBoxConfig, MSG_OBJ_TYPE_RX);
+    CANMessageSet(CAN0_BASE, RX_OBJ_ID, &rxBoxConfig, MSG_OBJ_TYPE_RX);
 }
