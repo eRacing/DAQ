@@ -3,6 +3,8 @@ import sys
 
 filename = sys.argv[1]
 
+# TODO: update the reader parsing
+
 with open(filename, "rb") as infile:
     with open(filename.lower()+".csv", 'w', newline='') as outfile:
         writer = csv.writer(outfile)
