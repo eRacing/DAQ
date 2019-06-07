@@ -29,7 +29,7 @@ void daqInit() {
     canInit();
 
     /* initialize SD card */
-    sdcardInit();
+    assert(sdcardInit() == 0);
 
     /* enable interrupts */
     assert(IntMasterEnable());
