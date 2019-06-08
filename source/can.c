@@ -37,6 +37,7 @@ static struct can_rb ringbuffer;
 
 void canInterrupt() {
     uint32_t status = CANIntStatus(CAN0_BASE, CAN_INT_STS_CAUSE);
+    CANIntClear(CAN0_BASE, status);
 
     if(status == CAN_INT_INTID_STATUS) {
         status = CANStatusGet(CAN0_BASE, CAN_STS_CONTROL);
@@ -44,7 +45,6 @@ void canInterrupt() {
     }
 
     if(status != RX_OBJ_ID) {
-        CANIntClear(CAN0_BASE, status);
         return;
     }
 
@@ -52,9 +52,6 @@ void canInterrupt() {
     tCANMsgObject canObject;
     canObject.pui8MsgData = msg.data;
     CANMessageGet(CAN0_BASE, RX_OBJ_ID, &canObject, 0);
-    if(canObject.ui32Flags != MSG_OBJ_NEW_DATA) {
-        return;
-    }
 
     /* TODO: get timestamp */
 
