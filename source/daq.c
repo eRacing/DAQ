@@ -45,17 +45,20 @@ void daqLoop() {
         ledDisable(LED_GREEN);
         subbuf = canGetSubbufferBlocking(&size);
         sdcardWrite(subbuf, size);
+        canFlushSubbuffer(subbuf);
 
         ledDisable(LED_RED);
         ledEnable(LED_YELLOW);
         ledDisable(LED_GREEN);
         subbuf = canGetSubbufferBlocking(&size);
         sdcardWrite(subbuf, size);
+        canFlushSubbuffer(subbuf);
 
         ledDisable(LED_RED);
         ledDisable(LED_YELLOW);
         ledEnable(LED_GREEN);
         subbuf = canGetSubbufferBlocking(&size);
         sdcardWrite(subbuf, size);
+        canFlushSubbuffer(subbuf);
     }
 }
