@@ -1,9 +1,9 @@
-
 #include <utils.h>
 #include <config.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <can.h>
+#include <tick.h>
 
 #include <driverlib/gpio.h>
 #include <driverlib/can.h>
@@ -53,8 +53,7 @@ void canInterrupt() {
     canObject.pui8MsgData = msg.data;
     CANMessageGet(CAN0_BASE, RX_OBJ_ID, &canObject, 0);
 
-    /* TODO: get timestamp */
-
+    msg.timestamp = getSystemTick();
     msg.id = canObject.ui32MsgID;
     can_rb_insert(&ringbuffer, &msg);
 }
