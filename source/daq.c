@@ -1,6 +1,7 @@
 #include <sdcard.h>
 #include <can.h>
 #include <led.h>
+#include <tick.h>
 #include <utils.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -24,6 +25,9 @@ void daqInit() {
 
     /* initialize LEDs */
     ledInit();
+
+    /* initialize system tick */
+    tickInit();
 
     /* initialize CAN */
     canInit();
