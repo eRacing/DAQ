@@ -8,6 +8,7 @@
 struct messsage {
     uint32_t timestamp;
     uint16_t id;
+    uint16_t padding;
     uint8_t data[8];
 };
 
