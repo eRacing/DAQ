@@ -104,8 +104,9 @@ void canInit() {
 }
 
 void* canGetSubbufferBlocking(size_t* size) {
-    size[0] = sizeof(struct can_rb_subbuf);
-    return (void*) can_rb_get_subbuf(&ringbuffer);
+    struct can_rb_subbuf* subbuf = can_rb_get_subbuf(&ringbuffer);
+    size[0] = sizeof(subbuf->entries);
+    return (void*) subbuf;
 }
 
 void canFlushSubbuffer(void* subbuf) {
