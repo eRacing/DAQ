@@ -48,7 +48,7 @@ void canInterrupt() {
         return;
     }
 
-    struct messsage msg;
+    struct messsage msg = CAN_MESSAGE_INIT;
     tCANMsgObject canObject;
     canObject.pui8MsgData = msg.data;
     CANMessageGet(CAN0_BASE, RX_OBJ_ID, &canObject, 0);
