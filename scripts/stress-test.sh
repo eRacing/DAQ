@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_NAME=$(basename "$0")
-SUBBUF_SIZE=16
+SUBBUF_SIZE=32
 CAN_DEVICE=can0
 
 function send_message() {
