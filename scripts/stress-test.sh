@@ -5,7 +5,7 @@ SUBBUF_SIZE=16
 CAN_DEVICE=can0
 
 function send_message() {
-    local subbuf=$1
+    local subbuf=$(($1 % 256))
     local id=$2
     local msg
 
